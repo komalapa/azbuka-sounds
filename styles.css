@@ -1,0 +1,63 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+#letters-field {
+  width: 80%;
+  max-width: 40em;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 1em;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.letter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 5em;
+  padding: 1em 0;
+  border: 0.2em solid gray;
+  border-radius: 0.5em;
+}
+
+.letter span {
+  font-size: 3em;
+  text-transform: uppercase;
+}
+
+.letter button {
+  background: none;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.vowel {
+  color: red;
+}
+
+.no-sound {
+  color: black;
+}
+
+.dull {
+  color: green;
+}
+
+.sonorous {
+  color: blue;
+}
+/*# sourceMappingURL=styles.css.map */
