@@ -2,6 +2,10 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+:root {
+  --border-radius: 0.5em;
+}
+
 #letters-field {
   width: 80%;
   max-width: 40em;
@@ -28,10 +32,10 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 5em;
-  padding: 1em 0;
+  width: 6em;
+  padding: 1em 0 0;
   border: 0.2em solid gray;
-  border-radius: 0.5em;
+  border-radius: var(--border-radius);
 }
 
 .letter span {
@@ -39,10 +43,24 @@ body {
   text-transform: uppercase;
 }
 
-.letter button {
-  background: none;
+.letter-syllable {
   -ms-flex-item-align: end;
       align-self: flex-end;
+  border: none;
+  border-color: #a2a2a2;
+  font-size: 1.5em;
+  border-radius: var(--border-radius);
+}
+
+.letter-syllable:hover {
+  background-color: lemonchiffon;
+}
+
+.letter-syllable {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  border: none;
+  border-color: #a2a2a2;
 }
 
 .vowel {
@@ -59,5 +77,9 @@ body {
 
 .sonorous {
   color: blue;
+}
+
+.lower-letters {
+  text-transform: lowercase;
 }
 /*# sourceMappingURL=styles.css.map */

@@ -237,8 +237,9 @@ const letters = {
 //     },
 // }
 
+const field = document.querySelector('#letters-field');
 function addLetters() {
-    const field = document.querySelector('#letters-field');
+    console.log(letters)
     for (letter in letters) {
         const letterWrp = document.createElement('div');
         letterWrp.classList.add('letter');
@@ -259,6 +260,9 @@ function addLetters() {
         letterWrp.append(letterSpan);
         const syllableBtn = document.createElement('button');
         syllableBtn.classList.add('letter-syllable');
+        syllableBtn.onclick = () =>{
+            addSyllables(letter)
+        }
         if (letters[letter].vowel) {
             syllableBtn.innerText = 'м'+letter;
             syllableBtn.id = 'syl-'+letter;
@@ -273,6 +277,29 @@ function addLetters() {
         field.append(letterWrp);
     };
 
+}
+
+function addSyllables(mainLetter){
+    field.innerHTML = '';
+    if (letters[mainLetter].vowel){
+        for (letter in letters){
+            console.log(letter, mainLetter)
+            if (letters[letter].vowel != letters[mainLetter].vowel && letters[letter].syllabic){
+                if ((mainLetter === 'и' && (letter === 'ж' || letter === 'ш')) || (mainLetter === 'я' && (letter === 'ч' || letter === 'щ')) || (mainLetter === 'ю' && (letter === 'ч' || letter === 'щ')) ) continue;
+                const syllable = letters[mainLetter].vowel? letter + mainLetter : mainLetter + letter;  
+                const syllableID = letters[mainLetter].vowel? letters[letter].id + letters[mainLetter].id : letters[mainLetter].id + letters[letter].id;  
+                const syllableWrp = document.createElement('div');
+                syllableWrp.classList.add('letter');
+                syllableWrp.id = syllableID;
+                const syllableSpan = document.createElement('span');
+                syllableSpan.classList.add('syllable');
+                syllableSpan.innerText = syllable;
+                syllableWrp.append(syllableSpan);
+                field.append(syllableWrp)    
+            }
+        }
+    }
+    
 }
 
 addLetters();
