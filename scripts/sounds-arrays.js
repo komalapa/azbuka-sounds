@@ -174,68 +174,248 @@ const letters = {
         vowel: true,
     },
 }
-// const syllables = {
-//     'б': {
-//         'а': 'ба',
-//         'о': 'бо',
-//         'у': 'бу',
-//         'э': 'бэ',
-//         'ы': 'бы',
-//         'я': 'бя',
-//         'ё': 'бё',
-//         'ю': 'бю',
-//         'е': 'бе',
-//         'и': 'би'
-//     },
-//     'в': {
-//         'а': 'ва',
-//         'о': 'во',
-//         'у': 'ву',
-//         'э': 'вэ',
-//         'ы': 'вы',
-//         'я': 'вя',
-//         'ё': 'вё',
-//         'ю': 'вю',
-//         'е': 'ве',
-//         'и': 'ви'
-//     },    
-//     'г': {
-//         'а': 'га',
-//         'о': 'го',
-//         'у': 'гу',
-//         'э': 'гэ',
-//         'ы': 'гы',
-//         'я': 'гя',
-//         'ё': 'гё',
-//         'ю': 'гю',
-//         'е': 'ге',
-//         'и': 'ги'
-//     },
-//     'д': {
-//         'а': 'да',
-//         'о': 'до',
-//         'у': 'ду',
-//         'э': 'дэ',
-//         'ы': 'ды',
-//         'я': 'дя',
-//         'ё': 'дё',
-//         'ю': 'дю',
-//         'е': 'де',
-//         'и': 'ди'
-//     },
-//     'ж': {
-//         'а': 'жа',
-//         'о': 'жо',
-//         'у': 'жу',
-//         'э': 'жэ',
-//         'ы': 'жы',
-//         'я': 'жя',
-//         'ё': 'жё',
-//         'ю': 'жю',
-//         'е': 'же',
-//         'и': 'би'
-//     },
-// }
+const syllables = {
+    'б': {
+        'а': ['ба', true],
+        'о': ['бо', true],
+        'у': ['бу', true],
+        'э': ['бэ', true],
+        'ы': ['бы', true],
+        'я': ['бя', true],
+        'ё': ['бё', true],
+        'ю': ['бю', true],
+        'е': ['бе', true],
+        'и': ['би', true]
+    },
+    'в': {
+        'а': ['ва', true],
+        'о': ['во', true],
+        'у': ['ву', true],
+        'э': ['вэ', true],
+        'ы': ['вы', true],
+        'я': ['вя', true],
+        'ё': ['вё', true],
+        'ю': ['вю', true],
+        'е': ['ве', true],
+        'и': ['ви', true]
+    },    
+    'г': {
+        'а': ['га', true],
+        'о': ['го', true],
+        'у': ['гу', true],
+        'э': ['гэ', true],
+        'ы': ['гы', true],
+        'я': ['гя', true],
+        'ё': ['гё', true],
+        'ю': ['гю', true],
+        'е': ['ге', true],
+        'и': ['ги', true]
+    },
+    'д': {
+        'а': ['да', true],
+        'о': ['до', true],
+        'у': ['ду', true],
+        'э': ['дэ', true],
+        'ы': ['ды', true],
+        'я': ['дя', true],
+        'ё': ['дё', true],
+        'ю': ['дю', true],
+        'е': ['де', true],
+        'и': ['ди', true]
+    },
+    'ж': {
+        'а': ['жа', true],
+        'о': ['жо', true],
+        'у': ['жу', true],
+        'э': ['жэ', true],
+        'ы': ['жы', true],
+        'я': ['жя', null],
+        'ё': ['жё', true],
+        'ю': ['жю', null],
+        'е': ['же', true],
+        'и': ['-', false]
+    },
+    'з': {
+        'а': ['за', true],
+        'о': ['зо', true],
+        'у': ['зу', true],
+        'э': ['зэ', true],
+        'ы': ['зы', true],
+        'я': ['зя', true],
+        'ё': ['зё', true],
+        'ю': ['зю', true],
+        'е': ['зе', true],
+        'и': ['зи', true]
+    },
+    'к': {
+        'а': ['ка', true],
+        'о': ['ко', true],
+        'у': ['ку', true],
+        'э': ['кэ', true],
+        'ы': ['кы', true],
+        'я': ['кя', true],
+        'ё': ['кё', true],
+        'ю': ['кю', true],
+        'е': ['ке', true],
+        'и': ['ки', true]
+    },
+    'л': {
+        'а': ['ла', true],
+        'о': ['ло', true],
+        'у': ['лу', true],
+        'э': ['лэ', true],
+        'ы': ['лы', true],
+        'я': ['ля', true],
+        'ё': ['лё', true],
+        'ю': ['лю', true],
+        'е': ['ле', true],
+        'и': ['ли', true]
+    },
+    'м': {
+        'а': ['ма', true],
+        'о': ['мо', true],
+        'у': ['му', true],
+        'э': ['мэ', true],
+        'ы': ['мы', true],
+        'я': ['мя', true],
+        'ё': ['мё', true],
+        'ю': ['мю', true],
+        'е': ['ме', true],
+        'и': ['ми', true]
+    },
+    'н': {
+        'а': ['на', true],
+        'о': ['но', true],
+        'у': ['ну', true],
+        'э': ['нэ', true],
+        'ы': ['ны', true],
+        'я': ['ня', true],
+        'ё': ['нё', true],
+        'ю': ['ню', true],
+        'е': ['не', true],
+        'и': ['ни', true]
+    },
+    'п': {
+        'а': ['па', true],
+        'о': ['по', true],
+        'у': ['пу', true],
+        'э': ['пэ', true],
+        'ы': ['пы', true],
+        'я': ['пя', true],
+        'ё': ['пё', true],
+        'ю': ['пю', true],
+        'е': ['пе', true],
+        'и': ['пи', true]
+    },
+    'р': {
+        'а': ['ра', true],
+        'о': ['ро', true],
+        'у': ['ру', true],
+        'э': ['рэ', true],
+        'ы': ['ры', true],
+        'я': ['ря', true],
+        'ё': ['рё', true],
+        'ю': ['рю', true],
+        'е': ['ре', true],
+        'и': ['ри', true]
+    },
+    'с': {
+        'а': ['са', true],
+        'о': ['со', true],
+        'у': ['су', true],
+        'э': ['сэ', true],
+        'ы': ['сы', true],
+        'я': ['ся', true],
+        'ё': ['сё', true],
+        'ю': ['сю', true],
+        'е': ['се', true],
+        'и': ['си', true]
+    },
+    'т': {
+        'а': ['та', true],
+        'о': ['то', true],
+        'у': ['ту', true],
+        'э': ['тэ', true],
+        'ы': ['ты', true],
+        'я': ['тя', true],
+        'ё': ['тё', true],
+        'ю': ['тю', true],
+        'е': ['те', true],
+        'и': ['ти', true]
+    },
+    'ф': {
+        'а': ['фа', true],
+        'о': ['фо', true],
+        'у': ['фу', true],
+        'э': ['фэ', true],
+        'ы': ['фы', true],
+        'я': ['фя', true],
+        'ё': ['фё', true],
+        'ю': ['фю', true],
+        'е': ['фе', true],
+        'и': ['фи', true]
+    },
+    'х': {
+        'а': ['ха', true],
+        'о': ['хо', true],
+        'у': ['ху', true],
+        'э': ['хэ', true],
+        'ы': ['хы', true],
+        'я': ['хя', true],
+        'ё': ['хё', true],
+        'ю': ['хю', true],
+        'е': ['хе', true],
+        'и': ['хи', true]
+    },
+    'ц': {
+        'а': ['ца', true],
+        'о': ['цо', true],
+        'у': ['цу', true],
+        'э': ['цэ', true],
+        'ы': ['цы', true],
+        'я': ['ця', null],
+        'ё': ['цё', null],
+        'ю': ['цю', true],
+        'е': ['це', true],
+        'и': ['ци', true]
+    },
+    'ч': {
+        'а': ['ча', true],
+        'о': ['чо', true],
+        'у': ['чу', true],
+        'э': ['чэ', null],
+        'ы': ['чы', null],
+        'я': ['-', false],
+        'ё': ['чё', true],
+        'ю': ['-', false],
+        'е': ['че', true],
+        'и': ['чи', true]
+    },
+    'ш': {
+        'а': ['ша', true],
+        'о': ['шо', true],
+        'у': ['шу', true],
+        'э': ['шэ', null],
+        'ы': ['-', false],
+        'я': ['шя', null],
+        'ё': ['шё', true],
+        'ю': ['шю', null],
+        'е': ['ше', true],
+        'и': ['ши', true]
+    },
+    'щ': {
+        'а': ['ща', true],
+        'о': ['що', true],
+        'у': ['щу', true],
+        'э': ['щэ', null],
+        'ы': ['щы', null],
+        'я': ['-', false],
+        'ё': ['щё', true],
+        'ю': ['-', false],
+        'е': ['ще', true],
+        'и': ['щи', true]
+    },
+}
 
 const field = document.querySelector('#letters-field');
 function addLetters() {
@@ -260,8 +440,9 @@ function addLetters() {
         letterWrp.append(letterSpan);
         const syllableBtn = document.createElement('button');
         syllableBtn.classList.add('letter-syllable');
+        syllableBtn.dataLetter = letter;
         syllableBtn.onclick = () =>{
-            addSyllables(letter)
+            addSyllables(letterSpan.innerText.toLowerCase())
         }
         if (letters[letter].vowel) {
             syllableBtn.innerText = 'м'+letter;
@@ -280,26 +461,41 @@ function addLetters() {
 }
 
 function addSyllables(mainLetter){
+    console.log(mainLetter)
     field.innerHTML = '';
+    
     if (letters[mainLetter].vowel){
-        for (letter in letters){
-            console.log(letter, mainLetter)
-            if (letters[letter].vowel != letters[mainLetter].vowel && letters[letter].syllabic){
-                if ((mainLetter === 'и' && (letter === 'ж' || letter === 'ш')) || (mainLetter === 'я' && (letter === 'ч' || letter === 'щ')) || (mainLetter === 'ю' && (letter === 'ч' || letter === 'щ')) ) continue;
-                const syllable = letters[mainLetter].vowel? letter + mainLetter : mainLetter + letter;  
-                const syllableID = letters[mainLetter].vowel? letters[letter].id + letters[mainLetter].id : letters[mainLetter].id + letters[letter].id;  
+        for (letter in syllables){
+            if (syllables[letter][mainLetter][1] != false){
+                const syllableID = letters[letter].id + letters[mainLetter].id;  
                 const syllableWrp = document.createElement('div');
                 syllableWrp.classList.add('letter');
+                if (syllables[letter][mainLetter][1] === null) syllableWrp.classList.add('rare')
                 syllableWrp.id = syllableID;
                 const syllableSpan = document.createElement('span');
                 syllableSpan.classList.add('syllable');
-                syllableSpan.innerText = syllable;
+                syllableSpan.innerText = syllables[letter][mainLetter][0];
                 syllableWrp.append(syllableSpan);
-                field.append(syllableWrp)    
+                field.append(syllableWrp)     
             }
         }
     }
-    
+    if (!letters[mainLetter].vowel){
+        for (letter in syllables[mainLetter]){
+            if (syllables[mainLetter][letter][1] != false){
+                const syllableID = letters[mainLetter].id + letters[letter].id;  
+                const syllableWrp = document.createElement('div');
+                syllableWrp.classList.add('letter');
+                if (syllables[mainLetter][letter][1] === null) syllableWrp.classList.add('rare')
+                syllableWrp.id = syllableID;
+                const syllableSpan = document.createElement('span');
+                syllableSpan.classList.add('syllable');
+                syllableSpan.innerText = syllables[mainLetter][letter][0];
+                syllableWrp.append(syllableSpan);
+                field.append(syllableWrp)     
+            }
+        }
+    }
 }
 
 addLetters();

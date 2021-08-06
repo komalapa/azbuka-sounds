@@ -82,4 +82,8 @@ body {
 .lower-letters {
   text-transform: lowercase;
 }
+
+.rare {
+  opacity: .3;
+}
 /*# sourceMappingURL=styles.css.map */
