@@ -419,6 +419,7 @@ const syllables = {
 
 const field = document.querySelector('#letters-field');
 function addLetters() {
+    field.innerHTML = '';
     console.log(letters)
     for (letter in letters) {
         const letterWrp = document.createElement('div');
@@ -463,7 +464,13 @@ function addLetters() {
 function addSyllables(mainLetter){
     console.log(mainLetter)
     field.innerHTML = '';
-    
+    const backBtn = document.createElement('button');
+    backBtn.onclick = () => {
+        addLetters();
+    };
+    backBtn.classList.add('back-button')
+    backBtn.innerText=('Назад к буквам!')
+    field.append(backBtn);
     if (letters[mainLetter].vowel){
         for (letter in syllables){
             if (syllables[letter][mainLetter][1] != false){
@@ -496,6 +503,7 @@ function addSyllables(mainLetter){
             }
         }
     }
+    field.append(backBtn);
 }
 
 addLetters();
