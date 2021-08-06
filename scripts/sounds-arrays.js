@@ -470,17 +470,21 @@ function addSyllables(mainLetter){
     };
     backBtn.classList.add('back-button')
     backBtn.innerText=('Назад к буквам!')
-    field.append(backBtn);
+    
+    const header = document.createElement('h3');
+    header.innerText = `Слоги с буквой ${mainLetter.toUpperCase()}`;
+    header.classList.add('field-header')
+    field.append(header)
     if (letters[mainLetter].vowel){
         for (letter in syllables){
             if (syllables[letter][mainLetter][1] != false){
                 const syllableID = letters[letter].id + letters[mainLetter].id;  
                 const syllableWrp = document.createElement('div');
-                syllableWrp.classList.add('letter');
+                syllableWrp.classList.add('letter', 'syllable');
                 if (syllables[letter][mainLetter][1] === null) syllableWrp.classList.add('rare')
                 syllableWrp.id = syllableID;
                 const syllableSpan = document.createElement('span');
-                syllableSpan.classList.add('syllable');
+                //syllableSpan.classList.add('syllable');
                 syllableSpan.innerText = syllables[letter][mainLetter][0];
                 syllableWrp.append(syllableSpan);
                 field.append(syllableWrp)     
@@ -492,11 +496,11 @@ function addSyllables(mainLetter){
             if (syllables[mainLetter][letter][1] != false){
                 const syllableID = letters[mainLetter].id + letters[letter].id;  
                 const syllableWrp = document.createElement('div');
-                syllableWrp.classList.add('letter');
+                syllableWrp.classList.add('letter', 'syllable');
                 if (syllables[mainLetter][letter][1] === null) syllableWrp.classList.add('rare')
                 syllableWrp.id = syllableID;
                 const syllableSpan = document.createElement('span');
-                syllableSpan.classList.add('syllable');
+                //syllableSpan.classList.add('syllable');
                 syllableSpan.innerText = syllables[mainLetter][letter][0];
                 syllableWrp.append(syllableSpan);
                 field.append(syllableWrp)     

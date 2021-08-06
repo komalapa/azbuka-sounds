@@ -26,6 +26,11 @@ h1 {
   padding: 1em;
 }
 
+.field-header {
+  width: 100%;
+  text-align: center;
+}
+
 .letter {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -59,6 +64,10 @@ h1 {
 
 .letter-syllable:hover {
   background-color: lemonchiffon;
+}
+
+.syllable {
+  padding: 0.1em;
 }
 
 .letter-syllable {
