@@ -6,6 +6,10 @@ body {
   --border-radius: 0.5em;
 }
 
+h1 {
+  text-align: center;
+}
+
 #letters-field {
   width: 80%;
   max-width: 40em;
@@ -19,6 +23,12 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  padding: 1em;
+}
+
+.field-header {
+  width: 100%;
+  text-align: center;
 }
 
 .letter {
@@ -56,6 +66,10 @@ body {
   background-color: lemonchiffon;
 }
 
+.syllable {
+  padding: 0.1em;
+}
+
 .letter-syllable {
   -ms-flex-item-align: end;
       align-self: flex-end;
@@ -81,5 +95,36 @@ body {
 
 .lower-letters {
   text-transform: lowercase;
+}
+
+.rare {
+  opacity: .3;
+}
+
+.back-button {
+  width: 100%;
+  height: 30px;
+  font-size: 20px;
+  border: none;
+  background-color: #f2f2f2;
+  position: relative;
+}
+
+.back-button:before {
+  display: block;
+  content: '';
+  border: 30px solid transparent;
+  border-right: 50px solid #f2f2f2;
+  position: absolute;
+  top: -15px;
+  left: -53px;
+}
+
+.back-button:hover {
+  background-color: #d3d3d3;
+}
+
+.back-button:hover:before {
+  border-right-color: #d3d3d3;
 }
 /*# sourceMappingURL=styles.css.map */
