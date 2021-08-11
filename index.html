@@ -11,7 +11,8 @@
     <title>Звуки алфавита</title>
 </head>
 <body>
-    <h1>Звуки русского алфавита</h1>
+    <div id="fullscreen">
+        <h1>Звуки русского алфавита</h1>
     <main>
         <!-- <h2 class="screen-header">Звуки букв</h2> -->
         <div id="letters-field"></div>
@@ -20,6 +21,15 @@
             <button type="button" class="letter-syllable">ма</a>   
         </div> -->
     </main>
+    <button class="fullscreen-btn fullscreen-off"></button>
+    <form class="fullscreen-exit-form">
+        <div class="fullscreen-exit-form-wrp">
+            <label for="">Какое сегодня число?<input type="text" id="fullscreen-answ"></label>
+            <button type="submit" class="fullscreen-btn fullscreen-on">>></button>
+        </div>
+    </form>
+    </div>
+    
     <script src="scripts/sounds-arrays.js"></script>
 </body>
 </html>
