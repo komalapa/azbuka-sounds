@@ -51,6 +51,7 @@ h1 {
 .letter span {
   font-size: 3em;
   text-transform: uppercase;
+  pointer-events: none;
 }
 
 .letter-syllable {

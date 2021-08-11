@@ -38,6 +38,7 @@ h1 {
     span {
         font-size: 3em;
         text-transform: uppercase;
+        pointer-events: none;
     }
 
     &-syllable {
