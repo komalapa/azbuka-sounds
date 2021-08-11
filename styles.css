@@ -156,11 +156,11 @@ h1 {
 }
 
 .fullscreen-off {
-  background-image: url("/imgs/svg/full-screen-svgrepo-com.svg");
+  background-image: url("imgs/svg/full-screen-svgrepo-com.svg");
 }
 
 .fullscreen-on {
-  background-image: url("/imgs/svg/exit-full-screen-svgrepo-com.svg");
+  background-image: url("imgs/svg/exit-full-screen-svgrepo-com.svg");
 }
 
 .fullscreen-exit-form {
