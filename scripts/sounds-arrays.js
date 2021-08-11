@@ -150,7 +150,7 @@ const letters = {
         syllabic: true
     },
     'ъ': {
-        id : "hard",
+        id: "hard",
         vowel: null,
     },
     'ы': {
@@ -198,7 +198,7 @@ const syllables = {
         'ю': ['вю', true],
         'е': ['ве', true],
         'и': ['ви', true]
-    },    
+    },
     'г': {
         'а': ['га', true],
         'о': ['го', true],
@@ -418,9 +418,10 @@ const syllables = {
 }
 
 const field = document.querySelector('#letters-field');
+
 function addLetters() {
     field.innerHTML = '';
-    console.log(letters)
+    // console.log(letters)
     for (letter in letters) {
         const letterWrp = document.createElement('div');
         letterWrp.classList.add('letter');
@@ -442,17 +443,17 @@ function addLetters() {
         const syllableBtn = document.createElement('button');
         syllableBtn.classList.add('letter-syllable');
         syllableBtn.dataLetter = letter;
-        syllableBtn.onclick = () =>{
+        syllableBtn.onclick = () => {
             addSyllables(letterSpan.innerText.toLowerCase())
         }
         if (letters[letter].vowel) {
-            syllableBtn.innerText = 'м'+letter;
-            syllableBtn.id = 'syl-'+letter;
+            syllableBtn.innerText = 'м' + letter;
+            syllableBtn.id = 'syl-' + letter;
             letterWrp.append(syllableBtn);
-        } else if(letters[letter].vowel === false){
-            if (letters[letter].syllabic){
-                syllableBtn.innerText = letter+'а';
-                syllableBtn.id = 'syl-'+letter;
+        } else if (letters[letter].vowel === false) {
+            if (letters[letter].syllabic) {
+                syllableBtn.innerText = letter + 'а';
+                syllableBtn.id = 'syl-' + letter;
                 letterWrp.append(syllableBtn);
             }
         }
@@ -461,24 +462,24 @@ function addLetters() {
 
 }
 
-function addSyllables(mainLetter){
-    console.log(mainLetter)
+function addSyllables(mainLetter) {
+    // console.log(mainLetter)
     field.innerHTML = '';
     const backBtn = document.createElement('button');
     backBtn.onclick = () => {
         addLetters();
     };
     backBtn.classList.add('back-button')
-    backBtn.innerText=('Назад к буквам!')
-    
+    backBtn.innerText = ('Назад к буквам!')
+
     const header = document.createElement('h3');
     header.innerText = `Слоги с буквой ${mainLetter.toUpperCase()}`;
     header.classList.add('field-header')
     field.append(header)
-    if (letters[mainLetter].vowel){
-        for (letter in syllables){
-            if (syllables[letter][mainLetter][1] != false){
-                const syllableID = letters[letter].id + letters[mainLetter].id;  
+    if (letters[mainLetter].vowel) {
+        for (letter in syllables) {
+            if (syllables[letter][mainLetter][1] != false) {
+                const syllableID = letters[letter].id + letters[mainLetter].id;
                 const syllableWrp = document.createElement('div');
                 syllableWrp.classList.add('letter', 'syllable');
                 if (syllables[letter][mainLetter][1] === null) syllableWrp.classList.add('rare')
@@ -487,14 +488,14 @@ function addSyllables(mainLetter){
                 //syllableSpan.classList.add('syllable');
                 syllableSpan.innerText = syllables[letter][mainLetter][0];
                 syllableWrp.append(syllableSpan);
-                field.append(syllableWrp)     
+                field.append(syllableWrp)
             }
         }
     }
-    if (!letters[mainLetter].vowel){
-        for (letter in syllables[mainLetter]){
-            if (syllables[mainLetter][letter][1] != false){
-                const syllableID = letters[mainLetter].id + letters[letter].id;  
+    if (!letters[mainLetter].vowel) {
+        for (letter in syllables[mainLetter]) {
+            if (syllables[mainLetter][letter][1] != false) {
+                const syllableID = letters[mainLetter].id + letters[letter].id;
                 const syllableWrp = document.createElement('div');
                 syllableWrp.classList.add('letter', 'syllable');
                 if (syllables[mainLetter][letter][1] === null) syllableWrp.classList.add('rare')
@@ -503,7 +504,7 @@ function addSyllables(mainLetter){
                 //syllableSpan.classList.add('syllable');
                 syllableSpan.innerText = syllables[mainLetter][letter][0];
                 syllableWrp.append(syllableSpan);
-                field.append(syllableWrp)     
+                field.append(syllableWrp)
             }
         }
     }
@@ -511,3 +512,41 @@ function addSyllables(mainLetter){
 }
 
 addLetters();
+
+
+//fullscreen
+const wrp = document.querySelector("#fullscreen");
+const fullScreenBtn = document.querySelector(".fullscreen-btn");
+const fullscreenForm = document.querySelector('.fullscreen-exit-form')
+const fullscreenFormSubmit = fullscreenForm.querySelector('button');
+
+function toggleFullScreen() {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+        fullScreenBtn.classList.remove('fullscreen-off');
+        fullScreenBtn.classList.add('fullscreen-on')
+    } else {
+        if (document.exitFullscreen) {
+            const date = new Date();
+            fullscreenForm.classList.add('shown')
+            const answ = document.querySelector('#fullscreen-answ');
+            answ.focus();
+            fullscreenForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                //console.log("prevented?")
+                
+                if (answ.value.trim() == date.getDate()) {
+                    document.exitFullscreen();
+                    fullScreenBtn.classList.remove('fullscreen-on');
+                    fullScreenBtn.classList.add('fullscreen-off');
+                }
+                fullscreenForm.classList.remove('shown')
+                answ.value = '';
+            })
+        }
+    }
+}
+
+fullScreenBtn.onclick = function () {
+    toggleFullScreen()
+}
