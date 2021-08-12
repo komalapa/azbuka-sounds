@@ -417,10 +417,24 @@ const syllables = {
     },
 }
 
+function playSound(event){
+    //console.log (event)
+    if (event.target.classList.contains('letter')){
+        //console.log(event.target.id)
+        const audioEl = document.querySelector(`audio[data-sound="${event.target.id}"]`);
+        if (!audioEl) return;
+        console.log(audioEl)
+        audioEl.currentTime = 0;
+        audioEl.play();
+    }
+}
+
 const field = document.querySelector('#letters-field');
+const audios = document.querySelector('#audios')
 
 function addLetters() {
     field.innerHTML = '';
+    audios.innerHTML = '';
     // console.log(letters)
     for (letter in letters) {
         const letterWrp = document.createElement('div');
@@ -457,7 +471,12 @@ function addLetters() {
                 letterWrp.append(syllableBtn);
             }
         }
+        letterWrp.addEventListener('click', playSound)
         field.append(letterWrp);
+        const sound = document.createElement('audio');
+        sound.dataset.sound = letters[letter].id;
+        sound.src = `sounds/letters/${letters[letter].id}.wav`;
+        audios.append(sound);
     };
 
 }
@@ -465,6 +484,7 @@ function addLetters() {
 function addSyllables(mainLetter) {
     // console.log(mainLetter)
     field.innerHTML = '';
+    audios.innerHTML = '';
     const backBtn = document.createElement('button');
     backBtn.onclick = () => {
         addLetters();
@@ -488,7 +508,12 @@ function addSyllables(mainLetter) {
                 //syllableSpan.classList.add('syllable');
                 syllableSpan.innerText = syllables[letter][mainLetter][0];
                 syllableWrp.append(syllableSpan);
+                syllableWrp.addEventListener('click',playSound);
                 field.append(syllableWrp)
+                const sound = document.createElement('audio');
+                sound.dataset.sound = syllableID;
+                sound.src = `sounds/syllables/${syllableID}.wav`;
+                audios.append(sound);
             }
         }
     }
@@ -504,7 +529,12 @@ function addSyllables(mainLetter) {
                 //syllableSpan.classList.add('syllable');
                 syllableSpan.innerText = syllables[mainLetter][letter][0];
                 syllableWrp.append(syllableSpan);
+                syllableWrp.addEventListener('click',playSound);
                 field.append(syllableWrp)
+                const sound = document.createElement('audio');
+                sound.dataset.sound = syllableID;
+                sound.src = `sounds/syllables/${syllableID}.wav`;
+                audios.append(sound);
             }
         }
     }
